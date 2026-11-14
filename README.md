@@ -1,4 +1,3 @@
-
 # Google Login System
 
 Sistema web de autenticação com Google, desenvolvido com React, Vite, Node.js, Express e PostgreSQL, utilizando o Supabase para armazenamento de usuários e sessões.
@@ -26,6 +25,10 @@ O projeto permite que usuários realizem login com suas contas Google, mantenham
 - Limitação de tentativas de login.
 - Verificação da origem das requisições de autenticação.
 - Dashboard acessível após autenticação.
+- Alternância entre temas claro e escuro.
+- Persistência da preferência de tema no navegador.
+- Página de Política de Privacidade.
+- Interface responsiva para computadores e dispositivos móveis.
 
 ## Tecnologias utilizadas
 
@@ -50,9 +53,10 @@ O projeto permite que usuários realizem login com suas contas Google, mantenham
 - PostgreSQL
 - Supabase
 
-### Hospedagem
+### Hospedagem e versionamento
 
 - Vercel
+- Git
 - GitHub
 
 ## Estrutura do projeto
@@ -64,7 +68,7 @@ google-login/
 ├── certificates/
 │   └── prod-ca-2021.crt
 ├── public/
-│   ├── favicon.svg
+│   └── favicon.svg
 ├── scripts/
 │   └── testarConexao.js
 ├── server/
@@ -85,6 +89,11 @@ google-login/
 │   └── index.js
 ├── src/
 │   ├── assets/
+│   ├── components/
+│   │   └── ThemeToggle.jsx
+│   ├── pages/
+│   │   ├── Privacidade.css
+│   │   └── Privacidade.jsx
 │   ├── App.css
 │   ├── App.jsx
 │   ├── index.css
@@ -159,8 +168,8 @@ npm run dev
 
 O projeto estará disponível em:
 
-- Frontend: http://localhost:5173
-- Backend: http://localhost:3000
+- **Frontend:** http://localhost:5173
+- **Backend:** http://localhost:3000
 
 ## Testando a conexão com o banco de dados
 
@@ -191,6 +200,37 @@ O comando verifica a conexão PostgreSQL e lista as tabelas disponíveis no sche
 | GET | `/api/me` | Consulta o usuário e a sessão atual |
 | POST | `/api/logout` | Encerra a sessão |
 
+## Interface e experiência do usuário
+
+A aplicação oferece uma interface responsiva com identidade visual própria.
+
+### Temas claro e escuro
+
+O usuário pode alternar entre os temas claro e escuro utilizando o botão disponível no cabeçalho.
+
+A preferência é armazenada localmente no navegador, permitindo que o tema selecionado seja mantido durante a navegação e após atualizar a página.
+
+### Página de Política de Privacidade
+
+A aplicação disponibiliza uma página dedicada à Política de Privacidade, contendo informações sobre:
+
+- Dados coletados durante a autenticação.
+- Finalidade do tratamento das informações.
+- Armazenamento de usuários e sessões.
+- Utilização de cookies.
+- Encerramento da sessão.
+- Serviços externos utilizados.
+- Direitos relacionados aos dados pessoais.
+- Canal de contato para solicitações.
+
+A página pode ser acessada em:
+
+https://google-login-beta-seven.vercel.app/privacidade
+
+### Responsividade
+
+A interface foi desenvolvida para se adaptar a diferentes tamanhos de tela, incluindo computadores e dispositivos móveis.
+
 ## Segurança
 
 O projeto implementa medidas como:
@@ -198,7 +238,7 @@ O projeto implementa medidas como:
 - Validação de tokens de identificação do Google no servidor.
 - Cookies com as opções `httpOnly` e `sameSite`.
 - Uso de cookies `secure` em ambiente de produção.
-- Armazenamento de hashes dos identificadores de sessão.
+- Armazenamento de hashes SHA-256 dos identificadores de sessão.
 - Consultas SQL parametrizadas.
 - Verificação de origem para operações de login e logout.
 - Limitação de tentativas de autenticação.
@@ -260,26 +300,6 @@ https://google-login-beta-seven.vercel.app
 
 A primeira permite o desenvolvimento local e a segunda autoriza o domínio publicado.
 
-## Testes realizados
-
-As seguintes funcionalidades foram verificadas no ambiente de produção:
-
-| Funcionalidade | Resultado |
-|---|---|
-| Publicação na Vercel | Aprovado |
-| Carregamento da interface | Aprovado |
-| Login com conta Google | Aprovado |
-| Acesso ao dashboard | Aprovado |
-| Persistência da sessão após F5 | Aprovado |
-| Logout | Aprovado |
-| Integração com o Supabase durante a autenticação | Aprovado |
-
-Também foram executados testes locais de compilação e análise do código utilizando:
-
-```bash
-npm run build
-npm run lint
-```
 
 ## Status do projeto
 
@@ -303,6 +323,7 @@ Projeto desenvolvido como atividade de estudo e prática de desenvolvimento web 
 - Persistência de dados em PostgreSQL.
 - Gerenciamento de sessões.
 - Segurança de aplicações web.
+- Criação de interfaces responsivas.
 - Versionamento com Git e GitHub.
 - Publicação de aplicações na Vercel.
 

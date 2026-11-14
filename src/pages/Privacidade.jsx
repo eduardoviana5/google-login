@@ -177,8 +177,8 @@ export default function Privacidade() {
              pelo e-mail:
             </p>
             <p>
-            <a href="mailto:SEU_EMAIL@gmail.com">
-             SEU_EMAIL@gmail.com
+            <a href="mailto:dudumav05@gmail.com">
+             dudumav05@gmail.com
             </a>
             </p>
           </section>

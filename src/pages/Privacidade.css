@@ -169,3 +169,168 @@
     font-size: 14px;
   }
 }
+
+
+/* Cabeçalho da Política de Privacidade */
+.privacy-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.privacy-header-actions .theme-toggle {
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   POLÍTICA DE PRIVACIDADE — TEMAS
+   ========================================= */
+
+/* Fundo adaptável */
+.privacy-page {
+  padding: 0 8%;
+  background:
+    radial-gradient(
+      ellipse at 15% 40%,
+      color-mix(in srgb, var(--accent-primary) 12%, transparent),
+      transparent 45%
+    ),
+    var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Largura e alinhamento */
+.privacy-container {
+  max-width: 1200px;
+}
+
+/* Cabeçalho */
+.privacy-header {
+  padding: 0 0 40px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.privacy-header-actions {
+  min-height: 86px;
+  margin-bottom: 45px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.privacy-back {
+  margin-bottom: 0;
+  color: var(--accent-primary);
+}
+
+.privacy-back:hover {
+  color: var(--text-primary);
+}
+
+.privacy-label {
+  color: var(--accent-primary);
+}
+
+.privacy-header h1 {
+  color: var(--text-primary);
+}
+
+.privacy-header > p {
+  color: var(--text-secondary);
+}
+
+/* Conteúdo central */
+.privacy-content {
+  max-width: 900px;
+  margin: 32px auto 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+}
+
+.privacy-content h2 {
+  color: var(--text-primary);
+}
+
+.privacy-content p,
+.privacy-content li {
+  color: var(--text-secondary);
+}
+
+.privacy-content section + section {
+  border-top: 1px solid var(--border-primary);
+}
+
+.privacy-content li::marker {
+  color: var(--accent-primary);
+}
+
+.privacy-content a {
+  color: var(--accent-secondary);
+  text-underline-offset: 3px;
+}
+
+/* Rodapé */
+.privacy-footer {
+  border-top: 1px solid var(--border-primary);
+  color: var(--text-muted);
+}
+
+.privacy-footer a {
+  color: var(--accent-primary);
+}
+
+.privacy-footer a:hover {
+  color: var(--text-primary);
+}
+
+/* Navegação por teclado */
+.privacy-back:focus-visible,
+.privacy-content a:focus-visible,
+.privacy-footer a:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* Responsividade */
+@media (max-width: 850px) {
+  .privacy-page {
+    padding: 0 5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .privacy-page {
+    padding: 0 16px;
+  }
+
+  .privacy-header-actions {
+    min-height: 76px;
+    margin-bottom: 30px;
+  }
+
+  .privacy-header {
+    padding-bottom: 28px;
+  }
+
+  .privacy-content {
+    padding: 8px 22px;
+  }
+}
+
+/* Identidade visual compartilhada */
+.privacy-label {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  text-transform: none;
+  color: var(--text-primary);
+}
+
+.privacy-label .brand-light {
+  color: var(--text-muted);
+  font-weight: 500;
+}

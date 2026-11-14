@@ -1,20 +1,73 @@
 
+/* =========================================
+   GOOGLE LOGIN SYSTEM — SISTEMA DE TEMAS
+   ========================================= */
+
+/* Tema claro (padrão) */
+:root {
+  color-scheme: light;
+
+  --bg-primary: #f7f8fc;
+  --bg-card: #ffffff;
+  --bg-feature: #e4edff;
+
+  --text-primary: #18233c;
+  --text-secondary: #536078;
+  --text-muted: #66758d;
+
+  --accent-primary: #527ce0;
+  --accent-secondary: #4474d8;
+
+  --border-primary: #e8eaf1;
+  --border-card: #e9edf5;
+
+  --shadow-card: 0 20px 65px #263b6810;
+}
+
+/* Tema escuro */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-primary: #0b1220;
+  --bg-card: #172235;
+  --bg-feature: #263b60;
+
+  --text-primary: #f1f5ff;
+  --text-secondary: #c2cce0;
+  --text-muted: #a7b5cc;
+
+  --accent-primary: #8eafff;
+  --accent-secondary: #a5beff;
+
+  --border-primary: #293750;
+  --border-card: #30405b;
+
+  --shadow-card: 0 20px 65px #00000035;
+}
+
+
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 0 8%;
   background:
-    radial-gradient(ellipse at 15% 40%, #e9efff 0, transparent 45%),
-    #f7f8fc;
+    radial-gradient(
+      ellipse at 15% 40%,
+      color-mix(in srgb, var(--accent-primary) 12%, transparent),
+      transparent 45%
+    ),
+    var(--bg-primary);
+  transition: background-color 0.3s ease;
 }
+
 
 .topbar {
   height: 86px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #e8eaf1;
+  border-bottom: 1px solid var(--border-primary);
 }
 
 .brand {
@@ -135,10 +188,14 @@
 }
 
 .login-card, .profile-card {
-  background: #fff;
-  border: 1px solid #e9edf5;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 22px;
-  box-shadow: 0 20px 65px #263b6810;
+  box-shadow: var(--shadow-card);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .login-card {
@@ -471,4 +528,282 @@
   outline: 2px solid #9db6ff;
   outline-offset: 4px;
   border-radius: 3px;
+}
+
+/* =========================================
+   CORES ADAPTÁVEIS — CLARO E ESCURO
+   ========================================= */
+
+/* Títulos principais */
+.brand,
+.presentation h1,
+.login-card h2,
+.dashboard-heading h1,
+.profile-info h2 {
+  color: var(--text-primary);
+}
+
+/* Textos secundários */
+.presentation-text,
+.feature,
+.card-description,
+.dashboard-heading p,
+.profile-info p {
+  color: var(--text-secondary);
+}
+
+/* Textos auxiliares */
+.brand-light,
+.topbar-label,
+.login-divider,
+.security-note,
+.detail-item span,
+.footer {
+  color: var(--text-muted);
+}
+
+/* Elementos de destaque */
+.presentation h1 span,
+.eyebrow,
+.processing-message {
+  color: var(--accent-primary);
+}
+
+/* Informações do usuário */
+.detail-item strong {
+  color: var(--text-primary);
+}
+
+/* Ícones dos recursos */
+.feature-icon {
+  background: var(--bg-feature);
+  color: var(--accent-secondary);
+}
+
+/* Divisórias */
+.profile-divider,
+.login-divider::before,
+.login-divider::after {
+  background: var(--border-primary);
+}
+
+.security-note {
+  border-top-color: var(--border-primary);
+}
+
+/* Rodapé */
+.footer {
+  border-top-color: var(--border-primary);
+}
+
+/* Link da Política de Privacidade */
+.footer-privacy-link {
+  color: var(--accent-primary);
+}
+
+.footer-privacy-link:hover {
+  color: var(--text-primary);
+}
+
+.footer-privacy-link:focus-visible {
+  outline-color: var(--accent-primary);
+}
+
+/* Ícones do cabeçalho e cartão */
+.brand-icon,
+.card-symbol {
+  background: var(--bg-card);
+  color: var(--accent-primary);
+  border-color: var(--border-card);
+}
+
+
+/* =========================================
+   COMPONENTES ADAPTÁVEIS AOS TEMAS
+   ========================================= */
+
+/* Área do perfil */
+.profile-avatar {
+  background: var(--bg-feature);
+  color: var(--accent-secondary);
+}
+
+/* Etiqueta de autenticação */
+.authenticated-badge {
+  background: #eafaf3;
+  color: #116b4e;
+}
+
+[data-theme="dark"] .authenticated-badge {
+  background: #153d34;
+  color: #8aebc0;
+}
+
+/* Botão de encerrar sessão */
+.logout-button {
+  background: #fff7f7;
+  border-color: #f0dede;
+  color: #b93636;
+}
+
+.logout-button:hover:not(:disabled) {
+  background: #ffeaea;
+}
+
+[data-theme="dark"] .logout-button {
+  background: #38232d;
+  border-color: #65404b;
+  color: #ffb7bc;
+}
+
+[data-theme="dark"] .logout-button:hover:not(:disabled) {
+  background: #50303a;
+}
+
+/* Mensagens de erro */
+.error-message {
+  background: #fff1f1;
+  color: #a52a2a;
+}
+
+[data-theme="dark"] .error-message {
+  background: #44242c;
+  color: #ffc5c5;
+}
+
+/* Tela de carregamento */
+.loading-screen {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+}
+
+.loading-spinner {
+  border-color: var(--border-primary);
+  border-top-color: var(--accent-primary);
+}
+
+/* Informações de sessão */
+.detail-item .active-status {
+  color: #159768 !important;
+}
+
+[data-theme="dark"] .detail-item .active-status {
+  color: #80e4b5 !important;
+}
+
+/* Ajustes de contraste */
+[data-theme="dark"] .login-divider {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .brand-icon,
+[data-theme="dark"] .card-symbol {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Acessibilidade: foco visível */
+.logout-button:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+
+/* Acessibilidade: reduzir animações */
+@media (prefers-reduced-motion: reduce) {
+  .app-container,
+  .login-card,
+  .profile-card,
+  .logout-button,
+  .footer-privacy-link {
+    transition: none;
+  }
+
+  .loading-spinner {
+    animation: none;
+  }
+}
+
+/* =========================================
+   BOTÃO DE ALTERNÂNCIA DE TEMA
+   ========================================= */
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-primary);
+  border-radius: 14px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  box-shadow: 0 4px 15px rgba(20, 35, 65, 0.06);
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+
+@media (max-width: 500px) {
+  .topbar-actions {
+    gap: 10px;
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle {
+    transition: none;
+  }
+
+  .theme-toggle:hover,
+  .theme-toggle:active {
+    transform: none;
+  }
+}
+
+/* Cabeçalho otimizado para celulares */
+@media (max-width: 500px) {
+  .topbar-label {
+    display: none;
+  }
+
+  .brand {
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .topbar-actions {
+    margin-left: 12px;
+  }
 }

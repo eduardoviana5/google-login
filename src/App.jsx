@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
+import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   const [usuario, setUsuario] = useState(null);
@@ -213,17 +214,21 @@ function App() {
   return (
     <main className="app-container">
       <header className="topbar">
+        
         <a href="/" className="brand">
-          <span className="brand-icon">G</span>
           <span>
-            Auth<span className="brand-light">Studio</span>
+            Google <span className="brand-light">Login System</span>
           </span>
         </a>
 
-        <span className="topbar-label">
-          AUTENTICAÇÃO SEGURA
-        </span>
-      </header>
+          <div className="topbar-actions">
+            <span className="topbar-label">
+              AUTENTICAÇÃO SEGURA
+            </span>
+            <ThemeToggle />
+          </div>
+          </header>
+
 
       <section className="main-content">
         {!usuario ? (
@@ -275,9 +280,23 @@ function App() {
             </div>
 
             <div className="login-card">
-              <div className="card-symbol">
-                <span>G</span>
-              </div>
+             <div className="card-symbol">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+               >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </div>
+
 
               <h2>Bem-vindo!</h2>
 
@@ -430,7 +449,7 @@ function App() {
       </section>
     
     <footer className="footer">
-      <span>AuthStudio © 2026</span>
+      <span>Google Login System © 2026</span>
       <a href="/privacidade" className="footer-privacy-link">
         Política de Privacidade
       </a>

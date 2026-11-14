@@ -2,12 +2,26 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <script>
+      (function () {
+        try {
+         const temaSalvo = localStorage.getItem('google-login-theme');
+         const tema = temaSalvo === 'dark' ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', tema);
+          document.documentElement.style.colorScheme = tema;
+        } catch {
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.documentElement.style.colorScheme = 'light';
+        }
+      })();
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" type="image/png" href="/google-login-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <title>Google Login System</title>
+    <title>Google Login System | Autenticação Segura</title>
 
     <script
       src="https://accounts.google.com/gsi/client"

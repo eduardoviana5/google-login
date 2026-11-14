@@ -1,4 +1,4 @@
-
+import ThemeToggle from '../components/ThemeToggle';
 import './Privacidade.css';
 
 export default function Privacidade() {
@@ -6,12 +6,16 @@ export default function Privacidade() {
     <main className="privacy-page">
       <div className="privacy-container">
         <header className="privacy-header">
-          <a href="/" className="privacy-back">
-            ← Voltar ao início
-          </a>
+          <div className="privacy-header-actions">
+            <a href="/" className="privacy-back">
+              ← Voltar ao início
+            </a>
+            
+            <ThemeToggle />
+          </div>
 
           <span className="privacy-label">
-            GOOGLE LOGIN SYSTEM
+            Google <span className="brand-light">Login System</span>
           </span>
 
           <h1>Política de Privacidade</h1>
@@ -185,7 +189,7 @@ export default function Privacidade() {
     </div>
 
         <footer className="privacy-footer">
-          <span>AuthStudio © 2026</span>
+          <span>Google Login System © 2026</span>
           <a href="/">Voltar ao Google Login System</a>
         </footer>
       </div>

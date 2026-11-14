@@ -64,8 +64,7 @@ google-login/
 ├── certificates/
 │   └── prod-ca-2021.crt
 ├── public/
-│   ├── google-login-icon.png
-│   └── icons.svg
+│   ├── favicon.svg
 ├── scripts/
 │   └── testarConexao.js
 ├── server/

@@ -9,6 +9,31 @@ function App() {
   const [carregando, setCarregando] = useState(true);
   const [processando, setProcessando] = useState(false);
   const [erro, setErro] = useState('');
+  const [temaGoogle, setTemaGoogle] = useState(
+    () => document.documentElement.getAttribute('data-theme') || 'light'
+  );
+
+  useEffect(() => {
+    const atualizarTema = () => {
+      const temaAtual =
+        document.documentElement.getAttribute('data-theme');
+
+      setTemaGoogle(temaAtual === 'dark' ? 'dark' : 'light');
+    };
+
+    atualizarTema();
+
+    const observador = new MutationObserver(atualizarTema);
+
+    observador.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    return () => observador.disconnect();
+  }, []);
+
+
 
   const googleInitializedRef = useRef(false);
   const credentialCallbackRef = useRef(null);
@@ -72,17 +97,18 @@ function App() {
       // Evita duplicar o botão
       container.innerHTML = '';
 
-      window.google.accounts.id.renderButton(
-        container,
-        {
-          theme: 'outline',
-          size: 'large',
-          shape: 'pill',
-          text: 'continue_with',
-          width: Math.min(container.clientWidth, 350),
-          locale: 'pt-BR',
-        }
-      );
+      
+    window.google.accounts.id.renderButton(
+      container,
+      {
+        theme: temaGoogle === 'dark' ? 'filled_black' : 'outline',
+        size: 'large',
+        shape: 'pill',
+        text: 'continue_with',
+        width: Math.min(container.clientWidth, 350),
+        locale: 'pt-BR',
+      }
+    );
     }
 
     if (window.google?.accounts?.id) {
@@ -100,7 +126,7 @@ function App() {
       ativo = false;
       clearInterval(timer);
     };
-  }, [carregando, usuario]);
+  }, [carregando, usuario, temaGoogle]);
 
   // Processa o login
   async function handleCredentialResponse({ credential }) {

@@ -428,11 +428,15 @@ function App() {
           </div>
         )}
       </section>
+    
+    <footer className="footer">
+      <span>AuthStudio © 2026</span>
+      <a href="/privacidade" className="footer-privacy-link">
+        Política de Privacidade
+      </a>
+      <span>Projeto de autenticação com Google GIS</span>
+    </footer>
 
-      <footer className="footer">
-        <span>AuthStudio © 2026</span>
-        <span>Projeto de autenticação com Google GIS</span>
-      </footer>
     </main>
   );
 }

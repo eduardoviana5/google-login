@@ -452,3 +452,23 @@
     font-size: 9px;
   }
 }
+
+/* Link da Política de Privacidade */
+.footer-privacy-link {
+  color: #9db6ff;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-privacy-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-privacy-link:focus-visible {
+  outline: 2px solid #9db6ff;
+  outline-offset: 4px;
+  border-radius: 3px;
+}

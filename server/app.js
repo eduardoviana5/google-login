@@ -7,7 +7,8 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes.js';
 
 const app = express();
-
+// Evita divulgar o framework utilizado pelo servidor.
+app.disable('x-powered-by');
 // Permite que o Express interprete requisições JSON.
 // Limita o tamanho do corpo da requisição a 10 KB.
 app.use(express.json({ limit: '10kb' }));
@@ -27,6 +28,8 @@ app.use('/api', authRoutes);
 
 // Tratamento de erros de requisições.
 app.use((erro, req, res, next) => {
+  void next;
+  
   if (erro.type === 'entity.too.large') {
     return res.status(413).json({
       erro: 'A requisição excedeu o limite de 10 KB.',
@@ -39,7 +42,11 @@ app.use((erro, req, res, next) => {
     });
   }
 
-  next(erro);
+  console.error('Erro não tratado na API:', erro);
+
+  return res.status(500).json({
+    erro: 'Ocorreu um erro interno no servidor.',
+  });
 });
 
 export default app;
